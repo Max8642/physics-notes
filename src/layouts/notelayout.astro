@@ -1,0 +1,21 @@
+---
+import 'katex/dist/katex.min.css';
+
+const { frontmatter } = Astro.props;
+const title = frontmatter?.title ?? 'Untitled';
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>{title}</title>
+	</head>
+	<body style="font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f8fafc; color: #111827;">
+		<main style="max-width: 800px; margin: 0 auto; padding: 2rem;">
+			<p><a href="/">← Home</a></p>
+			<h1>{title}</h1>
+			<slot />
+		</main>
+	</body>
+</html>
