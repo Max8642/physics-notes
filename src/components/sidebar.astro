@@ -1,0 +1,17 @@
+---
+import NavTree from './nav-tree.astro';
+import { notesTree } from '../data/notes-tree';
+---
+
+<aside
+  style="
+    width: 280px;
+    padding: 1rem;
+    border-right: 1px solid #d1d5db;
+    background: #ffffff;
+    overflow-y: auto;
+  "
+>
+  <h2 style="font-size: 1rem; margin-top: 0;">Contents</h2>
+  <NavTree nodes={notesTree} />
+</aside>

@@ -1,7 +1,9 @@
 ---
-layout: ../../layouts/notelayout.astro
+layout: ../../layouts/NoteLayout.astro
 title: Commutators
 ---
+
+import Derivation from '../../components/Derivation.astro'
 
 The commutator of two operators is defined as
 
@@ -22,3 +24,53 @@ $$
 $$
 
 This often means they can be simultaneously diagonalized in an appropriate setting.
+
+<Derivation>
+  <span slot="summary">Show derivation of $[x,p] = i\hbar$</span>
+
+Let the momentum operator act as
+
+$$
+p = -i\hbar \frac{d}{dx}.
+$$
+
+Then acting on a test function $\psi(x)$,
+
+$$
+[x,p]\psi = x(p\psi) - p(x\psi).
+$$
+
+Compute each term:
+
+$$
+x(p\psi) = x\left(-i\hbar \frac{d\psi}{dx}\right)
+= -i\hbar x \frac{d\psi}{dx},
+$$
+
+and
+
+$$
+p(x\psi) = -i\hbar \frac{d}{dx}(x\psi)
+= -i\hbar \left(\psi + x\frac{d\psi}{dx}\right).
+$$
+
+So
+
+$$
+[x,p]\psi
+= -i\hbar x \frac{d\psi}{dx}
+- \left[-i\hbar \left(\psi + x\frac{d\psi}{dx}\right)\right].
+$$
+
+This simplifies to
+
+$$
+[x,p]\psi = i\hbar \psi.
+$$
+
+Therefore,
+
+$$
+[x,p] = i\hbar.
+$$
+</Derivation>

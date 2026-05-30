@@ -1,14 +1,20 @@
+---
+import NavTree from '../components/nav-tree.astro';
+import { notesTree } from '../data/notes-tree';
+---
+
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
 		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
 		<title>Physics Notes</title>
 	</head>
-	<body>
-		<h1>Physics Notes</h1>
-		<p><a href="/quantum/commutators">Go to commutators notes</a></p>
+	<body style="font-family: Arial, sans-serif; margin: 0; padding: 2rem; background: #f8fafc; color: #111827;">
+		<main style="max-width: 900px; margin: 0 auto;">
+			<h1>Physics Notes</h1>
+			<p>Browse by topic:</p>
+
+			<NavTree nodes={notesTree} />
+		</main>
 	</body>
 </html>

@@ -1,0 +1,27 @@
+---
+import type { NoteNode } from '../data/notes-tree';
+
+const { nodes } = Astro.props as { nodes: NoteNode[] };
+---
+
+<ul style="list-style: none; padding-left: 1rem; margin: 0;">
+  {nodes.map((node) => (
+    <li style="margin: 0.35rem 0;">
+      {node.href ? (
+        <a href={node.href} style="text-decoration: none; color: #2563eb;">
+          {node.title}
+        </a>
+      ) : (
+        <span style="font-weight: 600; color: #111827;">
+          {node.title}
+        </span>
+      )}
+
+      {node.children && node.children.length > 0 && (
+        <div style="margin-top: 0.35rem;">
+          <Astro.self nodes={node.children} />
+        </div>
+      )}
+    </li>
+  ))}
+</ul>

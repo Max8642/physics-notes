@@ -1,5 +1,6 @@
 ---
 import 'katex/dist/katex.min.css';
+import Sidebar from '../components/sidebar.astro';
 
 const { frontmatter } = Astro.props;
 const title = frontmatter?.title ?? 'Untitled';
@@ -11,11 +12,49 @@ const title = frontmatter?.title ?? 'Untitled';
 		<meta name="viewport" content="width=device-width" />
 		<title>{title}</title>
 	</head>
-	<body style="font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f8fafc; color: #111827;">
-		<main style="max-width: 800px; margin: 0 auto; padding: 2rem;">
-			<p><a href="/">← Home</a></p>
-			<h1>{title}</h1>
-			<slot />
-		</main>
+	<body style="font-family: Arial, sans-serif; margin: 0; background: #f8fafc; color: #111827;">
+		<input id="sidebar-toggle" type="checkbox" style="display: none;" />
+
+		<div style="display: flex; min-height: 100vh;">
+			<div id="sidebar-wrapper">
+				<Sidebar />
+			</div>
+
+			<div style="flex: 1; min-width: 0;">
+				<header style="padding: 1rem 1.5rem; border-bottom: 1px solid #d1d5db; background: white;">
+					<label
+						for="sidebar-toggle"
+						style="
+							display: inline-block;
+							cursor: pointer;
+							padding: 0.4rem 0.75rem;
+							border: 1px solid #d1d5db;
+							border-radius: 6px;
+							background: #f9fafb;
+							margin-right: 1rem;
+						"
+					>
+						Toggle Sidebar
+					</label>
+
+					<a href="/" style="text-decoration: none; color: #2563eb;">Home</a>
+				</header>
+
+				<main style="max-width: 800px; margin: 0 auto; padding: 2rem;">
+					<h1>{title}</h1>
+					<slot />
+				</main>
+			</div>
+		</div>
+
+		<style>
+			#sidebar-toggle:not(:checked) ~ div #sidebar-wrapper {
+				display: block;
+			}
+
+			#sidebar-toggle:checked ~ div #sidebar-wrapper {
+				display: none;
+			}
+		</style>
 	</body>
 </html>
